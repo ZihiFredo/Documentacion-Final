@@ -34,14 +34,14 @@ El proyecto funciona con cuatro elementos:
 
 ## Características principales
 
-Primero, se responde a el cuestinario en el google sheets:
+Primero, se responde a el cuestinario en google forms:
 
-PONER SCREENSHOT DEL GOOGLE FORMS
-
+![Google Forms 1](https://github.com/ZihiFredo/Documentacion-Final/blob/main/Captura%20de%20Pantalla%202022-05-22%20a%20la(s)%2022.41.09.png)
+![Google Forms 2](https://github.com/ZihiFredo/Documentacion-Final/blob/main/Captura%20de%20Pantalla%202022-05-22%20a%20la(s)%2022.41.42.png)
 
 Una vez contestada, las respuestas de la encuesta se guardan en el google sheets:
 
-PONER SCREENSHOT DEL GOOGLE SHEET
+![Google Sheets](https://github.com/ZihiFredo/Documentacion-Final/blob/main/Captura%20de%20Pantalla%202022-05-22%20a%20la(s)%2022.51.14.png)
 
 
 Despues, la informacion se pasan a la base de datos. La informacion se almacena conforme al siguiente diagrama Entidad-Relación de la base de datos: 
