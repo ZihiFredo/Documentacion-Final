@@ -26,141 +26,41 @@ El sistema consiste de una encuesta la cual pregunta a los hospitales por inform
 
 ## Tecnología Usada
 
-Se utilizan principalmente 4 elementos grandes para que el proyecto funcione:
+El proyecto funciona con cuatro elementos:
 
-1. __Google forms__: aquí es donde se creó la encuesta y se reciben los datos para que la información pueda seguir su flujo.
-2. __Google sheets__: se guarda la información de la encuesta para poder pasara a la base de datos.
-3. __PostgresSQL__: PostgreSQL es un sistema de gestión de bases de datos relacional orientado a objetos que utilizamos para poder crear la base de datos.
-4. __DBeaver__: DBeaver es una aplicación de software cliente de SQL para la manipulación y mantenimiento de las bases de datos.
+1. __Google forms__: mediante una encuesta recibe los datos para que la información pueda seguir su flujo.
+2. __Google sheets__: guarda la información de la encuesta que se pasará a la base de datos.
+3. __PostgresSQL__: gestiona la base de datos relacional orientada a objetos.
+4. __DBeaver__: para la manipulación y mantenimiento de la base de datos.
 
 ## Características principales
 
-### Screenshot
+Primero, se responde a el cuestinario en el google sheets:
 
-#### Ejemplo de una gráfica
+PONER SCREENSHOT DEL GOOGLE FORMS
 
-A continuación, se muestra una gráfica creada a partir de la información recaudada de las encuestas almacenadas en la base de datos junto con el código para poder observar los datos graficados.
+Una vez contestada, las respuestas de la encuesta se guardan en el google sheets:
 
-Tiempo promedio de reservas: Tiempo promedio existente de reservas para cada recurso registrado en cada hospital, así como sus características geográficas.
+PONER SCREENSHOT DEL GOOGLE SHEET
 
+Despues, la informacion se pasan a la base de datos. La informacion se almacena conforme al siguiente diagrama Entidad-Relación de la base de datos: 
 
+https://dbdiagram.io/embed/6098481db29a09603d141499
 
-###### Tablas en la base de datos
+![ER_voxmapp_dbeaver](https://user-images.githubusercontent.com/77375206/117859721-fdcd0180-b254-11eb-8251-1de45397df5d.PNG)
+
+De esta manera se facilita la extraccion y la busqueda de los datos 
+
+La información recaudada de las encuestas almacenadas en la base de datos se presenta de la siguiente forma: 
 
 ![Tabla parte 1](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/Captura%20de%20Pantalla%202022-03-12%20a%20la(s)%2013.44.59.png?raw=true)
 ![Tabla parte 2](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/Captura%20de%20Pantalla%202022-03-12%20a%20la(s)%2013.45.20.png)
 
-###### Gráfica
+Ejemplo de como la informacion puede ser analizada una vez en la base de datos, se utiliza tableu en este caso:
 
 ![Gráfica](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/Captura%20de%20Pantalla%202022-03-12%20a%20la(s)%2013.46.38.png)
 
-###### Código
-
-```python
---
-
-create view necesidades_hospital as(
-	with reservas_num as (
-		select
-		    case r.oxygen_reserves 
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as oxygen_reserves_num,
-		    case r.antipyretics_reserves 
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as antipyretics_reserves_num,
-		    case r.anesthetics_and_muscular_relaxants
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as anesthetics_and_muscular_relaxants_num,
-		    case r.alcohol_reserves_and_handsoap
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as alcohol_reserves_and_handsoap_num,
-		    case r.personal_disposable_masks
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as personal_disposable_masks_num,
-		    case r.personal_vinyl_gloves
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as personal_vinyl_gloves_num,
-		    case r.personal_disposable_hats
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as personal_disposable_hats_num,
-		    case r.personal_disposable_aprons
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as personal_disposable_aprons_num,
-		    case r.personal_visors
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as personal_visors_num,
-		    case r.personal_disposable_shoe_covers
-		      when 'Yes, for 30 days' then 30
-		      when 'Yes, for 15 days' then 15
-		      when 'Yes, for 7 days' then 7
-		      when 'Yes, for 3 days' then 3
-		      when 'No' then 0
-		    end as personal_disposable_shoe_covers_num,
-		    r.num_test_kits,
-		    r.respiratory_ventilator_machines,
-		    r.reservas_id,
-		    r.update_id
-			from reservas r join update_ u on(r.reservas_id=u.update_id) join control_ c on(c.update_id=u.update_id)
-			where c.update_status like '%completed%' 
-	), health_levels as (
-		select u.moph_number as hos_id, avg(reservas_num.oxygen_reserves_num) as avg_oxygen, avg(reservas_num.antipyretics_reserves_num) as avg_antipyretics, avg(reservas_num.anesthetics_and_muscular_relaxants_num) as avg_anesthetics, avg(reservas_num.alcohol_reserves_and_handsoap_num) as avg_alcohol, avg(reservas_num.personal_disposable_masks_num) as avg_masks, avg(reservas_num.personal_disposable_aprons_num) as avg_aprons, avg(reservas_num.personal_vinyl_gloves_num) as avg_gloves, avg(reservas_num.personal_disposable_hats_num) as avg_hats, avg(reservas_num.personal_visors_num) as avg_visors, avg(reservas_num.personal_disposable_shoe_covers_num) as avg_shoe_covers, avg(reservas_num.num_test_kits) as avg_test, avg(reservas_num.respiratory_ventilator_machines) as avg_venti
-		from update_ u join reservas_num  using (update_id) join control_ c using (update_id)
-		where c.update_status like '%completed%' and c.problem like '%none%' and u.update_date <= current_date and u.update_date > (current_date - '1 month'::interval)
-		group by u.moph_number
-		order by u.moph_number
-	)
-	select h.moph_number, h.hospital_name, h.district, h.province, health_levels.avg_oxygen, health_levels.avg_antipyretics, health_levels.avg_anesthetics, health_levels.avg_alcohol, health_levels.avg_masks, health_levels.avg_aprons, health_levels.avg_gloves, health_levels.avg_hats, health_levels.avg_visors,health_levels.avg_shoe_covers, health_levels.avg_test,  health_levels.avg_venti
-	from hospital h join health_levels  on (health_levels.hos_id = h.moph_number)
-	order by h.moph_number
-)
-```
-
-#### Diagrama-ER
-
-Se presenta el diagrama Entidad-Relación de la base de datos hecho con db.diagram.io
-https://dbdiagram.io/embed/6098481db29a09603d141499
-
-y el que se muestra en DBeaver
-
-![ER_voxmapp_dbeaver](https://user-images.githubusercontent.com/77375206/117859721-fdcd0180-b254-11eb-8251-1de45397df5d.PNG)
-
-### Set up
+## Set up
 
 Para usar la aplicación como usuario solo se requiere instalar la aplicación de escritorio.
 
@@ -168,7 +68,7 @@ Para poder tener acceso completo al proyecto y poder utilizar de todas sus, muy 
 
 https://docs.google.com/document/d/1f8hk7zHd1ZKWIZ-X9rfSQJVDa396f0n6/edit
 
-### Uso
+## Uso
 
 Para el uso del proyecto como usuario, creamos un aplicación de escritorio con Visual Studio. Una vez instalada, al acceder a la aplicación, se debe ingresar lo siguiente: usuario y contraseña. Una vez dentro de ella, los empleados de Voxmapp podrán acceder a las respuestas de las encuestas, y los trabajadores de los hospitales podrán completar la encuesta.
 
