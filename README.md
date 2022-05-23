@@ -72,11 +72,6 @@ Para el uso del proyecto como usuario, creamos un aplicación de escritorio con 
 Para poder tener acceso completo al proyecto y poder utilizar de todas sus, muy útiles, herramientas se requiere instalar un par de cosas. Se debe conectar Google Sheets a Python y Python a la base de datos. En el [manual de usuario](https://docs.google.com/document/d/1f8hk7zHd1ZKWIZ-X9rfSQJVDa396f0n6/edit) se decribe como conectar google sheets a pyhton y pyhton a la base de datos
 
 
-## Estatus del Proyecto
-
-El proyecto actualmente está terminado; sin embargo, siempre estamos arreglando errores y buscando posibles mejoras. @ZihiFredo @Borghin
-
-
 ### Link de la encuesta
 
 Dejamos el link de la [encuesta](https://docs.google.com/forms/d/1NnXM4PWHAKxzAtIaQ5KYfcVVXQNEB6snOr99RaMZijE/edit) para cualquier posible situación o necesidad que se presente
@@ -85,3 +80,8 @@ Dejamos el link de la [encuesta](https://docs.google.com/forms/d/1NnXM4PWHAKxzAt
 ### Mejoras a futuro
 
 La principal mejora para el proyecto es la posibilidad de crear gráficas y vistas que contienen información que es pertinente para el cliente de manera más eficiente. Queremos mostrarlas de la mejor manera posible, por lo que estamos buscando poder conectar la base de datos con Tableau porque nos permite mostrar las gráficas y las vistas fácilmente, sin tener que acceder directamente a la base de datos. 
+
+
+## Estatus del Proyecto
+
+El proyecto actualmente está terminado; sin embargo, siempre estamos arreglando errores y buscando posibles mejoras. @ZihiFredo @Borghin
