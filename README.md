@@ -1,12 +1,13 @@
-# ProyectoVoxmapp
+# Proyecto Voxmapp
 
-El proyecto trata de facilitar el uso de datos que recibe una empresa a través de una encuesta. Esta encuesta consta de preguntas que serán almacenadas en un Google Sheets. Posteriormente, esos datos serán transferidos a una base de datos para poder ser procesados correctamente. 
+Sistema de flujo de datos que busca faciitar el uso y el analisis de información que recibe una empresa
+
 
 ## Tabla de contenidos
 
 + [Información General](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#información-general)
-+ [Tecnología Usada](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#tecnología-usada)
-+ [Características Principales](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#características-principales)
++ [Tecnología usada](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#tecnología-usada)
++ [Características principales](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#características-principales)
 + [Set up](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#set-up)
 + [Uso](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#uso)
 + [Estatus del Proyecto](https://github.com/ZihiFredo/Documentacion-Para-Usuario-Final/blob/main/README.md#estatus-del-proyecto)
@@ -16,17 +17,12 @@ El proyecto trata de facilitar el uso de datos que recibe una empresa a través 
 
 ## Información general
 
-Voxmapp es una empresa que se dedica a apoyar hospitales en países de menores recursos, en este caso Afganistán, especialmente ahora con la pandemia del COVID-19. Buscamos mejorar su proceso de recepción y manejo de datos. Estos datos se basan en la infraestructura de salud de hospitales en Afganistán y se reciben a través de un cuestionario mensual que se llena por el personal de los hospitales a quiénes se les notifica por teléfono. Es importante resaltar que estos hospitales están en un contexto de inestabilidad y a veces en zonas remotas. Actualmente, reciben los datos como un solo documento en el que las diferentes respuestas al cuestionario se separan por comas y otros caracteres. 
+El proyecto crea una via de datos la cual comienza recibiendo la informacion, se translada a una base de datos y una vez en la base de datos se organiza para poder analizarla.
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Además, los datos carecen de un formato estandarizado, debido a que se llenan desde diferentes regiones y contextos, lo que causa problemas a la hora de segmentar y analizar los datos. No es una solución óptima que retrasa el proceso de pasar la información de la encuesta a la base de datos. Éste se termina haciendo a mano. Poder encontrar un método más eficiente de recepción y estandarización de datos es de su interés. Luego de analizar los datos, Voxmapp sube estos periódicamente a Tableu. El problema se presenta cuando quieren actualizar las vistas en Tableu, pues se debe de hacer manualmente. Encontrar la forma de automatizar este proceso también es de su interés. 
+Voxmapp es una empresa que se dedica a apoyar hospitales en países de menores recursos. Al ser paises de bajos recursos no existe la infraestructura para conseguir informacion vital para mantener y mejorar los hospitales. Es por esto que buscamos mejorar su proceso de recepción y manejo de datos. Estos datos se basan en la infraestructura de salud de hospitales se reciben a través de un cuestionario mensual que se llena por el personal de los hospitales. 
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; El Hospital se ubica en un distrito, de una región, de un país. Dicho distrito, región y país puede tener más de un hospital en ellos. Para ello, será necesario un catálogo de países, regiones y distritos para la alta de los hospitales (se propone la relación de N Hospitales en 1 Región). En el hospital se registran los datos estáticos del mismo (ubicación, estado general de la infraestructura, etc). Cada hospital tiene un inventario que contiene diferentes recursos como medicinas, equipamiento médico, etc. (se propone la relación de N Recursos en 1 Inventario en 1 Hospital). 
+El sistema consiste de una encuesta la cual pregunta a los hospitales por informacion relevantl. Las respuestas de el cuestionario son guardada en un google sheets. Mas adelante, estas respuestas son transladadas a una base de datos la cual organiza la informacion. Por ultimo, ya en la base de datos, la informacion puede ser accesda facilmente y asi Voxmapp puede mas facilemente resolver problemas y ayudar a los hospitales.
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; El hospital tiene varios doctores (Lorenzo menciona en la entrevista que algunos médicos ejercen en más de un hospital o clínica. Tenemos que confirmar si se refiere a que están contratados en varios hospitales simultáneamente, por falta de personal calificado en las regiones, o si estaban en un solo trabajo a la vez; asumimos la primera situación hasta que tengamos respuesta) y personal. El personal tiende a permanecer por largos periodos de tiempo en los hospitales; por lo anterior, asumimos que ellos solo están contratados en un hospital a la vez (se proponen las relaciones de N médicos en N Hospitales y N Personal en 1 Hospital). Al registrar el hospital, se registran 3 Contactos (proponemos la relación  1 Hospital con 3(N) Contactos).
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Se ha dicho que los hospitales tratan casos COVID con frecuencia (proponemos N Casos covid en 1 Hospital). Por lo tanto, se debe crear una entidad de Casos Covid. Asumimos que los casos covid que se tratan son seguidos por un solo doctor y tratados por varios miembros del personal (Proponemos 1 Doctor para N Casos Covid y N Personal para N Casos Covid). 
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; El estado de los hospitales es revisado por Voxmapp periódicamente. A través de cuestionarios contestados por un miembro del personal de cada hospital registrado, se actualizan los datos que se tienen del hospital en cuestión. Cada cuestionario es contestado por un miembro del personal, y esto representa el influjo de los datos de cada hospital y su actualización (proponemos las relaciones 1 Personal contesta N Cuestionarios y 1 Cuestionario crea 1 Actualización).
 
 ## Tecnología Usada
 
